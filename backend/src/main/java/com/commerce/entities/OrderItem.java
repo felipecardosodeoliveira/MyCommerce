@@ -17,18 +17,27 @@ public class OrderItem {
 
     public OrderItem() {}
 
-    public OrderItem(OrderItemPK id, Integer quantity, Double price) {
-        this.id = id;
+    public OrderItem(Order order, Product product, Integer quantity, Double price) {
+        id.setOrder(order);
+        id.setProduct(product);
         this.quantity = quantity;
         this.price = price;
     }
 
-    public OrderItemPK getId() {
-        return id;
+    public void setOrder(Order order) {
+        id.setOrder(order);
     }
 
-    public void setId(OrderItemPK id) {
-        this.id = id;
+    public Order getOrder() {
+        return id.getOrder();
+    }
+
+    public void setProduct(Product product) {
+        id.setProduct(product);
+    }
+
+    public Product getProduct() {
+        return id.getProduct();
     }
 
     public Integer getQuantity() {
