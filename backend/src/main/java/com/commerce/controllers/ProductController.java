@@ -4,9 +4,9 @@ import com.commerce.dto.ProductDTO;
 import com.commerce.entities.Product;
 import com.commerce.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "/products")
@@ -15,9 +15,9 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping(value = "/")
-    public List<ProductDTO> findAll() {
-        return productService.findAll();
+    @GetMapping
+    public Page<ProductDTO> findAll(Pageable pageable) {
+        return productService.findAll(pageable);
     }
 
     @GetMapping(value = "/{id}")
