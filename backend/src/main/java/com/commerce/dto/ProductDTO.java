@@ -1,11 +1,17 @@
 package com.commerce.dto;
 
 import com.commerce.entities.Product;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
 public class ProductDTO {
     private Long id;
+    @Size(min = 4, max = 12, message = "Field should be between 4 and 12 characters")
+    @NotBlank(message = "Field cannot be empty")
     private String name;
     private String description;
+    @Positive(message = "Value should be positive")
     private Double price;
     private String imgUrl;
 
